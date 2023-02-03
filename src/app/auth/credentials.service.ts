@@ -16,13 +16,13 @@ const credentialsKey = 'credentials';
   providedIn: 'root',
 })
 export class CredentialsService {
-  private _credentials: Credentials | null = null;
+  private _credentials: any;
 
   constructor() {
-    const savedCredentials = sessionStorage.getItem(credentialsKey) || localStorage.getItem(credentialsKey);
-    if (savedCredentials) {
-      this._credentials = JSON.parse(savedCredentials);
-    }
+    // const savedCredentials = sessionStorage.getItem(credentialsKey) || localStorage.getItem(credentialsKey);
+    // if (savedCredentials) {
+    //   this._credentials = JSON.parse(savedCredentials);
+    // }
   }
 
   /**
@@ -49,14 +49,20 @@ export class CredentialsService {
    * @param remember True to remember credentials across sessions.
    */
   setCredentials(credentials?: Credentials, remember?: boolean) {
-    this._credentials = credentials || null;
+    console.log("credentialsss", credentials);
+    console.log("remember", remember);
+    
+    
+    this._credentials = credentials;
 
     if (credentials) {
+      console.log("entering in if");
+      
       const storage = remember ? localStorage : sessionStorage;
-      storage.setItem(credentialsKey, JSON.stringify(credentials));
+      localStorage.setItem(credentialsKey, JSON.stringify(credentials));
     } else {
-      sessionStorage.removeItem(credentialsKey);
-      localStorage.removeItem(credentialsKey);
+      // sessionStorage.removeItem(credentialsKey);
+      // localStorage.removeItem(credentialsKey);
     }
   }
 }

@@ -3,9 +3,9 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { TranslateModule } from '@ngx-translate/core';
 import { RouterTestingModule } from '@angular/router/testing';
 
-import { AuthenticationService, CredentialsService } from '@app/auth';
-import { MockAuthenticationService } from '@app/auth/authentication.service.mock';
-import { MockCredentialsService } from '@app/auth/credentials.service.mock';
+import { AuthenticationService, CredentialsService } from '@app/feature/auth';
+import { MockAuthenticationService } from '@app/feature/auth/authentication.service.mock';
+import { MockCredentialsService } from '@app/feature/auth/credentials.service.mock';
 import { I18nModule } from '@app/i18n';
 import { HeaderComponent } from './header.component';
 
