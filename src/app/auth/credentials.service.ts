@@ -57,9 +57,12 @@ export class CredentialsService {
 
     if (credentials) {
       console.log("entering in if");
+      console.log("credentialsKey", credentialsKey);
+      
       
       const storage = remember ? localStorage : sessionStorage;
-      localStorage.setItem(credentialsKey, JSON.stringify(credentials));
+      // storage.setItem(credentialsKey, credentials);
+      storage.setItem(credentialsKey, JSON.stringify(credentials));
     } else {
       // sessionStorage.removeItem(credentialsKey);
       // localStorage.removeItem(credentialsKey);
