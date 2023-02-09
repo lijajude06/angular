@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { finalize } from 'rxjs/operators';
-
 import { QuoteService } from './quote.service';
+import { DataService } from '@shared/http-service/http-service.service'
 
 @Component({
   selector: 'app-home',
@@ -12,7 +12,7 @@ export class HomeComponent implements OnInit {
   quote: string | undefined;
   isLoading = false;
 
-  constructor(private quoteService: QuoteService) {}
+  constructor(private quoteService: QuoteService, private dataService: DataService) {}
 
   ngOnInit() {
     this.isLoading = true;
@@ -26,5 +26,7 @@ export class HomeComponent implements OnInit {
       .subscribe((quote: string) => {
         this.quote = quote;
       });
+      let data = this.dataService.getAll().subscribe((data: any) => {console.log("RESPONSEEE",data);});
+      
   }
 }

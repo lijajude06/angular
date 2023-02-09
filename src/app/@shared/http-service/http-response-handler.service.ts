@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
-// import { NotificationsService } from 'angular2-notifications';
+import { NotificationsService } from 'angular2-notifications';
 // import { ConfigService } from '@app/app-config.service';
 import { Router } from '@angular/router';
 import { Observable, throwError } from 'rxjs';
@@ -10,7 +10,7 @@ export class HttpResponseHandler {
   constructor(
     private router: Router,
     private translateService: TranslateService,
-    // private notificationsService: NotificationsService,
+    private notificationsService: NotificationsService,
     // private configService: ConfigService
   ) {}
 

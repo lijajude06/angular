@@ -15,6 +15,8 @@ import { PrivateModule } from './feature/private/private.module';
 import { PublicModule } from './feature/public/public.module';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
+import { AuthInterceptor } from './@shared/http-interceptor/api-auth-token.interceptor';
+import { DataService } from './@shared/http-service/http-service.service';
 
 @NgModule({
   imports: [
@@ -44,6 +46,16 @@ import { AppRoutingModule } from './app-routing.module';
       useClass: ErrorHandlerInterceptor,
       multi: true,
     },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true,
+    },
+    // {
+    //   provide: HTTP_INTERCEPTORS,
+    //   useClass: DataService,
+    //   multi: true,
+    // },
     {
       provide: RouteReuseStrategy,
       useClass: RouteReusableStrategy,
